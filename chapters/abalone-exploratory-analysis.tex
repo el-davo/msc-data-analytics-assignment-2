@@ -1,5 +1,26 @@
 \section{Abalone Exploratory Analysis}
 
+The aim of this project is to build a prediction model that can accuratly predict the age of an individual abalone based on a data set containing the physical measurements of the abalone specimens. The measurements that are contained withing the \textbf{abalone.csv }file are outlined in Table 1 below
+
+\begin{table}[H]
+\centering
+\caption{Features of the abalone dataset}
+\label{my-label}
+\begin{tabular}{|l|c|l|}
+\hline
+Name           & \multicolumn{1}{l|}{Units} & Description                         \\ \hline
+Sex            & -                          & M (male), F (Female) and I (infant) \\ \hline
+Length         & mm                         & Longest shell measurement           \\ \hline
+Diameter       & mm                         & Perpendicular to length             \\ \hline
+Height         & mm                         & With meat in shell                  \\ \hline
+Whole Weight   & grams                      & Whole abalone                       \\ \hline
+Shucked Weight & grams                      & Weight of meat                      \\ \hline
+Viscera Weight & grams                      & Gut weight (after bleeding)         \\ \hline
+Shell Weight   & grams                      & After being dried                   \\ \hline
+Rings          & -                          & +1.5 gives the age in years         \\ \hline
+\end{tabular}
+\end{table}
+
 \subsection{Missing Data}
 
 I first looked for any missing data that may be in the abalone dataset. Once the data was in a dataframe I checked the dtypes of each column. Curiously the Rings column is displayed as an object type, when it should be numerical. I was able to coerce the Rings column to a numerical type by converting it with pandas and ignoring all rows that could not be converted. Every column except the Sex column is now a float64 type.
