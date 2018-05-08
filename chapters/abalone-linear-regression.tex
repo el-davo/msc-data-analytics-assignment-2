@@ -15,6 +15,35 @@ Linear regression can only operate on numerical values. This caused an issue wit
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.5,width=100mm]{./images/abalone-linear-regression-hist.png}
-  \caption{Table showing the results of one hot encoding}
-  \label{fig:abalone-one-hot-encoding}
+  \caption{Root mean squared error of  our linear regression}
+  \label{fig:abalone-linear-rmse}
 \end{figure}
+
+Figure \ref{fig:abalone-linear-rmse} shows a distribution of our residual errors. The residuals seem to follow a fairly normal distribution and our root mean squared error is not bad at 1.69. However our regression score comes out as 0.49. This means that our model will only be correct around 50\% of the time. This is not great.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5,width=100mm]{./images/abalone-linear-regression-line.png}
+  \caption{Linear regression line for predicting the age of abalones based on the rings}
+  \label{fig:abalone-linear-regression-line}
+\end{figure}
+Figure \ref{fig:abalone-linear-regression-line} shows the linear regression line. From a quick glance the model does not seem to fit our expected value very well. There is a possibility that the sex column may be throwing things off. I shall try plotting a linear regression for each sex. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5,width=100mm]{./images/abalone-linear-regression-hist-sex.png}
+  \caption{Residuals for values broken down by sex}
+  \label{fig:abalone-linear-regression-hist-sex}
+\end{figure}
+
+Figure \ref{fig:abalone-linear-regression-hist-sex} seems to indicate that breaking down the values into different sexes does improve the RMSE and the regression score for the infants. However for both male and female our prediction and RMSE seems to have gotten worse. The overall results though are disappointing as 56\% still is not great. Lets check the residuals versus each feature to see if there is any particular feature which may be skewing our results.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5,width=100mm]{./images/abalone-residuals-vs-features.png}
+  \caption{Residuals VS all features}
+  \label{fig:abalone-residuals-vs-features}
+\end{figure}
+The scatter plots seem to indicate that the values are not normally distributed. This means that there may be higher order features that are not accounted for. If this is the case then a linear regression model wont be able to make an accurate prediction. 
+
+\subsection{Lasso}
+
+Lets see if we can improve things using lasso.
