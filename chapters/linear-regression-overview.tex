@@ -17,7 +17,7 @@ This describes a straight line relationship, where y is the y axis variable and 
 The above image is an example of building a model with one variable, which predicts y based on the values of x using an intercept and slope values. More generally we will be fitting muliple co-efficients. Co-efficients means lots of different features. For example if we want to predict weather, then to make an accurate model we would probably need multiple features such as wind speed and atmospheric pressure.
 
 \begin{equation}
-\bar{y} = \frac{1}{n}\sum_{i=1}^n y_i
+\hat{y} = \frac{1}{n}\sum_{i=1}^n y_i
 \end{equation}
 
 Y hat is the predicted value of y. Beta 0 corresponds to to the intercept value. Sum of, is iterating over the features denoted by k. k can be described as the k co-efficient values for a feature.[EXPAND]
@@ -67,7 +67,28 @@ In figure \ref{fig:fitsplotbad} there are more odvious problems. The variants of
 
 \subsection*{Measuring Model Errors}
 
+If we are using linear regression to predict values, then we will need to measure the errors to prevent overfitting or underfitting.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5,width=100mm]{./images/graph-error-bars.png}
+  \caption{Fit plot showing a good indication that the assumptions of our model are correct}
+  \label{fig:graph-error-bars}
+\end{figure}
+In figure \ref{fig:graph-error-bars} we can see a linear model graph showing error levels. Each vertical bar represents some degree of an error. The further away from the straight orange line the greater the error. We can use the formula below to determine the error for each bar.
+\begin{equation}
+    \epsilon_i = y_i - \hat y_i
+\end{equation}
+Generally speaking if the error is less than zero this means that we have overestimated the values. If the error is greater than zero than the prediction is less than the true value. If our error is zero than it can be considered accurate.
 
+The equation mentioned above is good when dealing with single values. However if we have a dataset with many features it may be more usefull to measure the errors with a historgram.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5,width=100mm]{./images/graph-histogram.png}
+  \caption{Fit plot showing a good indication that the assumptions of our model are correct}
+  \label{fig:graph-histogram}
+\end{figure}
+Figure \ref{fig:graph-histogram} shows a histogram which could be used for multiple features. The dashed orange line is called the central tendancy. We can see that this particular graph is showing that errors will occur between -2.2 and +2.9, this is known as the dispersion of errors.
 
 \subsection*{Advantages of linear regression}
 
