@@ -1,11 +1,7 @@
 \section{Linear Regression}
 
 Linear Regression is a common technique in the world of predictive analytics. One common example of linear regression is the fitting of straight lines to a graph. 
-
-[INSERT IMAGE]
-
-Is a supervised machine learning technique [EXPAND]
-
+Is a supervised machine learning technique
 The data is usually not perfect, there is often a source of noise, this could be network latency
 
 \begin{equation}
@@ -20,7 +16,7 @@ The above image is an example of building a model with one variable, which predi
 \hat{y} = \frac{1}{n}\sum_{i=1}^n y_i
 \end{equation}
 
-Y hat is the predicted value of y. Beta 0 corresponds to to the intercept value. Sum of, is iterating over the features denoted by k. k can be described as the k co-efficient values for a feature.[EXPAND]
+Y hat is the predicted value of y. Beta 0 corresponds to to the intercept value. Sum of, is iterating over the features denoted by k. k can be described as the k co-efficient values for a feature.
 
 \subsection*{Linear Regression Features}
 
@@ -29,9 +25,6 @@ Linear regression works by finding a straight line relationship between a set of
 \subsection*{Feature Transformations}
 
 There are certain cases where a feature transformation is required. As mentioned earlier we would need one hot encoding to make sure our data is numeric. Using our example of a gender feature above, one hot encoding will take the string values 'M' and 'F' and convert them to numbers. Interestingly it will not replace our gender column, instead it will create 2 more features. We will end up with a new male and female feature encoded with a 1 for a true value and a 0 for a false value.
-
-[NEEDS IMAGE OF ONE HOT ENCODING]
-
 Transformations can be used to account for a non-linear relationship between our features and the predictor. Non linear relationships can be difficult to find, and usually relies on a deep understanding of the the data. Once we have this understanding we can start to ask questions such as, can the slope of
 the relationship between Xi and E(Y) be expected to have the same sign for all values of Xi. Should we expect the magnitude of the slope to increase as Xi increases, or should we expect
 the magnitude of the slope to decrease as Xi increases?\cite{nonlinearRelationships}
@@ -67,7 +60,7 @@ In figure \ref{fig:fitsplotbad} there are more odvious problems. The variants of
 
 \subsection*{Measuring Model Errors}
 
-If we are using linear regression to predict values, then we will need to measure the errors to prevent overfitting or underfitting.
+If we are using linear regression to predict values, then we will need to measure the errors to prevent over fitting or under fitting.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.5,width=100mm]{./images/graph-error-bars.png}
@@ -80,7 +73,7 @@ In figure \ref{fig:graph-error-bars} we can see a linear model graph showing err
 \end{equation}
 Generally speaking if the error is less than zero this means that we have overestimated the values. If the error is greater than zero than the prediction is less than the true value. If our error is zero than it can be considered accurate.
 
-The equation mentioned above is good when dealing with single values. However if we have a dataset with many features it may be more usefull to measure the errors with a historgram.
+The equation mentioned above is good when dealing with single values. However if we have a dataset with many features it may be more useful to measure the errors with a histogram.
 
 \begin{figure}[H]
   \centering
@@ -88,7 +81,44 @@ The equation mentioned above is good when dealing with single values. However if
   \caption{Fit plot showing a good indication that the assumptions of our model are correct}
   \label{fig:graph-histogram}
 \end{figure}
-Figure \ref{fig:graph-histogram} shows a histogram which could be used for multiple features. The dashed orange line is called the central tendancy. We can see that this particular graph is showing that errors will occur between -2.2 and +2.9, this is known as the dispersion of errors.
+Figure \ref{fig:graph-histogram} shows a histogram which could be used for multiple features. The dashed orange line is called the central tendency. We can see that this particular graph is showing that errors will occur between -2.2 and +2.9, this is known as the dispersion of errors.
+
+\subsection*{Least Squares}
+
+Least squares is a widely used technique for finding the best fitting curve to a set of data points by minimizing the sum of the squares of the residuals. Least squares tends to penalize large residuals as the difference between the residual and the actual value is squared and then summed up with the rest of the differences.
+
+\begin{equation}
+RSS=\sum^n_{i=1}(\hat{y_i}- y_i)^2
+\end{equation}
+The error, epsilon, for a single value can be expressed as
+\begin{equation}
+\epsilon = (\hat{y_i}- y_i)^2
+\end{equation}
+\begin{equation}
+RMSE = \sqrt\frac{\sum\limits_{i=1}^{n}(y_i-\hat{y_i})^2}{n}
+\end{equation}
+\begin{equation}
+RSS = \sum^n_{i=1}\epsilon_i^2
+\end{equation}
+We can see that the definition of a root mean square error of the RMSE equation that RSS could be expressed in relation to RMSE
+\begin{equation}
+RSS = nRMSE^2
+\end{equation}
+
+
+\subsection*{K Nearest Neighbours}
+
+K nearest neighbours is a simple classification algorithm. Its purpose is to separate data points into classes so that new data points can easily be classified.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5,width=100mm]{./images/k-nearest-neighbours-example.png}
+  \caption{Example of k nearest neighbours for the iris dataset}
+  \label{fig:k-nearest-neighbours-example}
+\end{figure}
+Figure \ref{fig:k-nearest-neighbours-example} which is taken from \cite{kNearestNeighboursExample}. Shows an example of k nearest neighbours classification in action for the iris dataset in sklearn. We can see that each of the data points lies in one of the classification zones. KNN is considered a lazy algorithm, because it does not requires little to no pre-training to classify the data. It also does not make any assumptions of the data. Some drawbacks of KNN is that it can be computationally expensive as all the training data is stored in memory. It can also be sensitive to irrelevant features. There is no smooth edges between classifications, when a data point jumps over a classification line it is immediately classed as something else.
+
+\subsection*{Ridge Regression}
+\subsection*{Lasso Regression}
 
 \subsection*{Advantages of linear regression}
 
@@ -97,11 +127,3 @@ Linear regression is a relatively simple to understand when compared to other pr
 Predictor importance can be measured by its coefficients. For example if we have 10 coefficients it is possible to measure the importance of each feature towards to the final prediction. To measure this we can look at how large the coefficient is compared to the target variable.
 
 We can apply certain transformations on our data to come up with 
-
-
-\subsection*{Least Squares}
-\subsection*{K Nearest Neighbours}
-\subsection*{Ridge Regression}
-\subsection*{Lasso Technique}
-
-\subsection*{Shrinkage Methods}
