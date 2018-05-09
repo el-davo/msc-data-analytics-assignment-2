@@ -46,4 +46,14 @@ The scatter plots seem to indicate that the values are not normally distributed.
 
 \subsection{Lasso}
 
-Lets see if we can improve things using lasso.
+Lets see if we can improve things using lasso. Lasso is a regression analysis method that performs variable selection and regularization to try and improve accuracy.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5,width=100mm]{./images/abalone-lasso-regression.png}
+  \caption{Root mean squared error for lasso regression}
+  \label{fig:abalone-lasso-regression}
+\end{figure}
+
+Figure \ref{fig:abalone-lasso-regression} shows that lasso marginally improves our RMSE score. It improves it by 0.001 to be exact. 
+It seems that linear regresion techniques just wont cut it with trying to predict the age of an abalone based on the current dataset. I can only conclude that there are not enough features available in the dataset to make an accurate prediction.
