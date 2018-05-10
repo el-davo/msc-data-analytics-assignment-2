@@ -44,16 +44,35 @@ Figure \ref{fig:abalone-linear-regression-hist-sex} seems to indicate that break
 \end{figure}
 The scatter plots seem to indicate that the values are not normally distributed. This means that there may be higher order features that are not accounted for. If this is the case then a linear regression model wont be able to make an accurate prediction. 
 
-\subsection{Lasso}
+\subsection{Lasso Regression}
 
 Lets see if we can improve things using lasso. Lasso is a regression analysis method that performs variable selection and regularization to try and improve accuracy.
-
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.5,width=100mm]{./images/abalone-lasso-regression.png}
   \caption{Root mean squared error for lasso regression}
   \label{fig:abalone-lasso-regression}
 \end{figure}
-
 Figure \ref{fig:abalone-lasso-regression} shows that lasso marginally improves our RMSE score. It improves it by 0.001 to be exact. 
-It seems that linear regresion techniques just wont cut it with trying to predict the age of an abalone based on the current dataset. I can only conclude that there are not enough features available in the dataset to make an accurate prediction.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5,width=100mm]{./images/abalone-lasso-plot.png}
+  \caption{Lasso coefficients as a function of the regularization}
+  \label{fig:abalone-lasso-plot}
+\end{figure}
+Figure \ref{fig:abalone-lasso-plot} shows the lasso plot displaying each coefficients importance towards the predictor. From the plot we can see that whole weight has very little bearing on the outcome as it dips towards zero very fast. Shell weight and infant type abalones seem to be the most important of our coefficients. Our lasso regression score however remains similar our linear regression score at about 49\% accuracy. I tried tuning the alpha parameter for maximum affect by tuning some of the hyper-parameters using GridSearchCV however this was not very successful and only marginally improved the score by a fraction of a percentage.
+
+\subsection{Ridge Regression}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5,width=100mm]{./images/abalone-ridge-regression.png}
+  \caption{Ridge coefficients as a function of the regularization}
+  \label{fig:abalone-ridge-plot}
+\end{figure}
+
+Figure \ref{fig:abalone-ridge-plot} shows the ridge plot showing each coefficients weight towards the predictor. Both viscera weight and volume seems to collapse quite quickly towards zero indicating they do not have much bearing on the predictor. Infant, Male, Female seem to be the last to hit the zero spot which could mean they have good weights towards the predictor. Similar to lasso regression in figure \ref{fig:abalone-lasso-plot} Whole weight looks like a good coefficient towards the predictor. 
+
+Unfortunately the ridge score performed similar to both linear regression and lasso regression in that it comes to 49\% accuracy. Again I tried tuning the hyper-parameters with GridSearchCV but changing the alpha had very little affect on the outcome. The RMSE for ridge regression performed worse than lasso with a value of 2.8044.
+
+After going through 3 forms of regression with 49\% accuracy it is clear that there is something wrong with our data as it does not seem to be a good fit for linear regression. Perhaps some data is missing, such as geographical locations or environmental conditions.
