@@ -118,6 +118,19 @@ K nearest neighbours is a simple classification algorithm. Its purpose is to sep
 Figure \ref{fig:k-nearest-neighbours-example} which is taken from \cite{kNearestNeighboursExample}. Shows an example of k nearest neighbours classification in action for the iris dataset in sklearn. We can see that each of the data points lies in one of the classification zones. KNN is considered a lazy algorithm, because it does not requires little to no pre-training to classify the data. It also does not make any assumptions of the data. Some drawbacks of KNN is that it can be computationally expensive as all the training data is stored in memory. It can also be sensitive to irrelevant features. There is no smooth edges between classifications, when a data point jumps over a classification line it is immediately classed as something else.
 
 \subsection*{Ridge Regression}
+
+Ridge regression is an example of a shrinkage method. A shrinkage methods aim is to reduce the magnitude of the linear regression coefficients. For example say we have the equation
+\begin{equation}\label{eq:non-ridge}
+\beta = (X^T X)^{-1}X^T y
+\end{equation}
+We can introduce ridge regression into this by adding $\lambda$ like in the equation below.
+\begin{equation}
+\beta = (X^T X + \lambda I)^{-1}X^T y
+\end{equation}
+where I is the identity matrix with the same number of features or columns as X. $\lambda$ is the ridge parameter. By adjusting the value of lambda we can introduce what is called a bias error. If we have a small value for $\lambda$ then we have a small shrinkage. If we have a large value for $\lambda$ then we have a larger value of shrinkage. If $\lambda$ has a value of zero then it is essentially the same as just using equation \ref{eq:non-ridge}. Because ridge regression introduces this adjustable parameter it is said to be a hyperparameter. Hyperparameters give the user a lot of control on how well the model is fitted. Finding the optimal value can be an interesting task, brute forcing can be computationally expensive so a high degree of knowledge is needed
+
+Marquardt and Ronald D\cite{doi:10.1080/00031305.1975.10479105} put forward that ridge regression produces improved coefficients when the predictors are highly correlated. 
+
 \subsection*{Lasso Regression}
 
 \subsection*{Advantages of linear regression}
