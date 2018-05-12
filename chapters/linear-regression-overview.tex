@@ -1,13 +1,10 @@
 \section{Linear Regression}
 
-Linear Regression is a common technique in the world of predictive analytics. One common example of linear regression is the fitting of straight lines to a graph. 
-Is a supervised machine learning technique
-The data is usually not perfect, there is often a source of noise, this could be network latency
+Linear Regression is a common and simple technique in the world of predictive analytics. One common example of linear regression is the fitting of straight lines to a graph. Linear Regression is considered a supervised machine learning technique. The data is usually not perfect, there is often a source of noise, this could be network latency.
 
 \begin{equation}
     f(x) = mx+c
 \end{equation}
-
 This describes a straight line relationship, where y is the y axis variable and x is the x axis variable, the relationship between them is defined as m where m is the slope of the line. c is a constant or intercept where the line meets the y axis
 
 The above image is an example of building a model with one variable, which predicts y based on the values of x using an intercept and slope values. More generally we will be fitting muliple co-efficients. Co-efficients means lots of different features. For example if we want to predict weather, then to make an accurate model we would probably need multiple features such as wind speed and atmospheric pressure.
@@ -132,12 +129,21 @@ where I is the identity matrix with the same number of features or columns as X.
 Marquardt and Ronald D\cite{doi:10.1080/00031305.1975.10479105} put forward that ridge regression produces improved coefficients when the predictors are highly correlated. 
 
 \subsection{Lasso Regression}
-Thing
+
+Lasso regression is commonly used to identify the most significant features in a dataset. Similar to ridge regression, lasso is considered a shrinkage method. The lasso stands for "Least Absolute Shrinkage and Selection Operator". Lasso adds a penalty to the absolute value of the magnitude of coefficients. Some coefficients can be eliminated if the penalty is large enough for that coefficient to be closer to zero which can be a good thing as it could lead to simpler models. Lasso is useful in some contexts due to its tendency to prefer solutions with fewer parameter values \cite{lassoAdvantage1}
 
 \subsection{Advantages of linear regression}
 
-Linear regression is a relatively simple to understand when compared to other prediction techniques such as deep neural networks.
+\begin{itemize}
+  \item Relatively simple to understand when compared to other prediction techniques such as deep neural networks.
+  \item Predictor importance can be measured by its coefficients. For example if we have 10 coefficients it is possible to measure the importance of each feature towards to the final prediction. To measure this we can look at how large the coefficient is compared to the target variable.
+  \item Very quick to run compared to other techniques such as decision trees
+\end{itemize}
 
-Predictor importance can be measured by its coefficients. For example if we have 10 coefficients it is possible to measure the importance of each feature towards to the final prediction. To measure this we can look at how large the coefficient is compared to the target variable.
+\subsection{Disadvantages of linear regression}
 
-We can apply certain transformations on our data to come up with 
+\begin{itemize}
+  \item Can only work on numeric data, which means data needs to be transformed to conform to this shortcoming, for example \textit{one hot encoding}
+  \item Often used inappropriately to model non-linear relationships.
+  \item Only applicable to linear relationships between attributes
+\end{itemize}
