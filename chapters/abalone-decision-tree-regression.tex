@@ -15,7 +15,15 @@ Figure \ref{fig:abalone-decision-tree-regression-start} shows the distribution o
   \label{fig:abalone-decision-tree-regression-randomcv}
 \end{figure}
 This is a good improvement. Our mean absolute error went from 1.64 down to 1.257 and the standard deviation of the error went from 2.29 down to 1.64. Visually also, in figure \ref{fig:abalone-decision-tree-regression-randomcv} we can see that the overall histogram is more centred and follows the standard deviation quite well. 
-For further optimizations I chose to use GridSearchCV to try and find the best possible result within reason by building on our random values. The grid search took a surprisingly long time to run, initially taking 1 hour. I had to over-clock my computer in order to get this down to 10 minutes. This is probably not recommended for the average computer user, but it does help with speeding up computations. I attempted to look into CUDA to run computations on the GPU\cite{6024507} however due to time constraints I had to drop this line of investigation in order to meet the deadline, however its something I would like to look into in the future. Figure \ref{fig:abalone-decision-tree-regression-gridcv} shows the results. 
+For further optimizations I chose to use GridSearchCV to try and find the best possible result within reason by building on our random values. The tuned values are listed below.
+
+\begin{itemize}
+  \item min\_samples\_split
+  \item min\_samples\_leaf
+  \item max\_depth
+\end{itemize}
+
+The grid search took a surprisingly long time to run, initially taking 1 hour. I had to over-clock my computer in order to get this down to 10 minutes. This is probably not recommended for the average computer user, but it does help with speeding up computations. I attempted to look into CUDA to run computations on the GPU\cite{6024507} however due to time constraints I had to drop this line of investigation in order to meet the deadline, however its something I would like to look into in the future. Figure \ref{fig:abalone-decision-tree-regression-gridcv} shows the results. 
 
 \begin{figure}[H]
   \centering
