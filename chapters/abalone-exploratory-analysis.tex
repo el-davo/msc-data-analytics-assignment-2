@@ -1,6 +1,6 @@
 \section{Abalone Exploratory Analysis}
 
-The aim of this project is to build a prediction model that can accuratly predict the age of an individual abalone based on a data set containing the physical measurements of the abalone specimens. The measurements that are contained withing the \textbf{abalone.csv }file are outlined in Table 1 below
+The aim of this project is to build a prediction model that can accurately predict the age of an individual abalone based on a data set containing the physical measurements of the abalone specimens. The measurements that are contained within the \textbf{abalone.csv }file are outlined in Table 1 below
 
 \begin{table}[H]
 \centering
@@ -23,9 +23,9 @@ Rings          & -                          & +1.5 gives the age in years       
 
 \subsection{Missing Data}
 
-I first looked for any missing data that may be in the abalone dataset. Once the data was in a dataframe I checked the dtypes of each column. Curiously the Rings column is displayed as an object type, when it should be numerical. I was able to coerce the Rings column to a numerical type by converting it with pandas and ignoring all rows that could not be converted. Every column except the Sex column is now a float64 type.
+I first looked for any missing data that may be in the abalone dataset. Once the data was in a data frame I checked the DTypes of each column. Curiously the Rings column is displayed as an object type when it should be numerical. I was able to coerce the Rings column to a numerical type by converting it with pandas and ignoring all rows that could not be converted. Every column except the Sex column is now a float64 type.
  
-Next I scanned the entire dataframe for NaN values.
+Next, the entire data frame was scanned for NaN values.
 
 \begin{figure}[H]
   \centering
@@ -34,7 +34,7 @@ Next I scanned the entire dataframe for NaN values.
   \label{fig:abalones-nan}
 \end{figure}
 
-In figure \ref{fig:abalones-nan} we can see that there are 4 rows with NaN values. This could have been the result of some invalid data gathering, or some computational error. Either way the Viscera Weight on row 878, the Rings on row 1888, the Sex on row 3093 and again the Rings on row 3466 are invalid so they needed to be removed as there is a high probability they might throw our regressions off later on.
+In figure \ref{fig:abalones-nan} we can see that there are 4 rows with NaN values. This could have been the result of some invalid data gathering, or some computational error. Either way, the Viscera Weight on row 878, the Rings on row 1888, the Sex on row 3093 and again the Rings on row 3466 are invalid so they needed to be removed as there is a high probability they might throw our regressions off later on.
 
 \subsection{Erroneous Data}
 
@@ -54,9 +54,9 @@ Figure \ref{fig:abalones-df-describe} shows a complete summary of the data conta
   \label{fig:abalones-less-than-zero}
 \end{figure}
 
-Figure \ref{fig:abalones-less-than-zero} shows rows that have less than or equal to zero values. As explained above these rows are erroneous. There are a few things we could do with these rows. We could replace the erroneous values with the mean value of the entire column. For example in the case of the Height column we could get the mean of the Height column and replace the zero with that value. Alternatively we can just drop the rows completely As there are only 3 rows detected as erroneous it seems reasonable to simply drop them for now.
+Figure \ref{fig:abalones-less-than-zero} shows rows that have less than or equal to zero values. As explained above these rows are erroneous. There are a few things we could do with these rows. We could replace the erroneous values with the mean value of the entire column. For example, in the case of the Height column, we could get the mean of the Height column and replace the zero with that value. Alternatively, we can just drop the rows completely As there are only 3 rows detected as erroneous it seems reasonable to simply drop them for now.
 
-I found the shucked weight column interesting. It is described as weight without the shell. If this is the case than it would be interesting to see if there are any abalones whose whole weight is less than their shucked weight.
+I found the shucked weight column interesting. It is described as weight without the shell. If this is the case then it would be interesting to see if there are any abalones whose whole weight is less than their shucked weight.
 
 \begin{figure}[H]
   \centering
@@ -65,7 +65,7 @@ I found the shucked weight column interesting. It is described as weight without
   \label{fig:shucked-vs-whole}
 \end{figure}
 
-Figure \ref{fig:shucked-vs-whole} shows a scatter plot of shucked weight versus whole weight. Most of the data does seems to follow a pretty linear pattern, however notice in the bottom left there are a few outliers with of infant type whose shucked weight is greater than the whole weight. Figure \ref{fig:shucked-greater-than-whole} shows the 4 rows with the offending data. For the purposes of this analysis I chose to drop those rows
+Figure \ref{fig:shucked-vs-whole} shows a scatter plot of shucked weight versus whole weight. Most of the data does seem to follow a pretty linear pattern, however, notice in the bottom left there are a few outliers with of infant type whose shucked weight is greater than the whole weight. Figure \ref{fig:shucked-greater-than-whole} shows the 4 rows of the offending data. For the purposes of this analysis, I chose to drop those rows
 
 \begin{figure}[H]
   \centering
